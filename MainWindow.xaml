@@ -27,36 +27,48 @@
             <Label Content="Пароль"/>
             <Label Content="Подтвердите пароль"/>
         </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="0">
-            <TextBox Margin="3.5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="3.5" Text="{Binding Surname, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="3.5" Text="{Binding Middlename, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="3.5" Text="{Binding Specialization, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="3.5" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox Margin="3.5" Name="RepeatPass"/>
+        <StackPanel Grid.Column="1" Grid.Row="0" x:Name="RegForm">
+            <TextBox Margin="3.5" Text="{Binding Name}"/>
+            <TextBox Margin="3.5" Text="{Binding LastName}"/>
+            <TextBox Margin="3.5" Text="{Binding MiddleName}"/>
+            <TextBox Margin="3.5" Text="{Binding Specialization}"/>
+            <TextBox Margin="3.5" Text="{Binding Password}"/>
+            <TextBox Margin="3.5" Text="{Binding RepeatPassword}"/>
+            <Button
+            Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+            Name="Register" 
+            Width="150" Height="25"
+            VerticalAlignment="Bottom"
+            Margin="5" Content="Зарегистрироваться" 
+            Click="Register_Click"
+            />
         </StackPanel>
-        <Button
-                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-                Name="Register" 
-                Width="150" Height="25"
-                VerticalAlignment="Bottom"
-                Margin="5" Content="Зарегистрироваться" 
-                Click="Register_Click"
-                />
         <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="Имя"/>
-            <Label Content="Фамилия"/>
+            <Label Content="ID"/>
             <Label Content="Пароль"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBox Margin="5" Text="{Binding Name}"></TextBox>
-            <TextBox Margin="5" Text="{Binding Surname}"></TextBox>
-            <TextBox Margin="5" Text="{Binding Password}"></TextBox>
+        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="LoginForm">
+            <TextBox Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+            <TextBox Margin="5" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            Name="Login"
+            Height="25" Width="150"
+            VerticalAlignment="Bottom"
+            Margin="5" Content="Войти" Click="Login_Click"/>
         </StackPanel>
-        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                Name="Login"
-                Height="25" Width="150"
-                VerticalAlignment="Bottom"
-                Margin="5" Content="Войти" Click="Login_Click"/>
+        <DockPanel Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="LightGray" Margin="5">
+            <StackPanel DockPanel.Dock="Left">
+                <Label Content="Имя:"/>
+                <Label Content="Фамилия:"/>
+                <Label Content="Отчество:"/>
+                <Label Content="Специализация:"/>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Right" x:Name="InfoForm">
+                <Label Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="{Binding MiddleName, UpdateSourceTrigger=PropertyChanged}"/>
+                <Label Content="{Binding Specialization, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>

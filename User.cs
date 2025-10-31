@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace pract7_trpo
@@ -15,5 +16,8 @@ namespace pract7_trpo
         public string Specialization { get; set; }
 
         public string Password { get; set; }
+        [JsonIgnore]
+        public string RepeatPassword { get; set; }
+        public string ID { get; set; }
     }
 }
