@@ -8,67 +8,162 @@
         Title="MainWindow" Height="600" Width="1000">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
+            <RowDefinition Height="225"/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Column="0" Grid.Row="0">
-            <Label Content="Имя"/>
-            <Label Content="Фамилия"/>
-            <Label Content="Отчество"/>
-            <Label Content="Специализация"/>
-            <Label Content="Пароль"/>
-            <Label Content="Подтвердите пароль"/>
-        </StackPanel>
-        <StackPanel Grid.Column="1" Grid.Row="0" x:Name="RegForm">
-            <TextBox Margin="3.5" Text="{Binding Name}"/>
-            <TextBox Margin="3.5" Text="{Binding LastName}"/>
-            <TextBox Margin="3.5" Text="{Binding MiddleName}"/>
-            <TextBox Margin="3.5" Text="{Binding Specialization}"/>
-            <TextBox Margin="3.5" Text="{Binding Password}"/>
-            <TextBox Margin="3.5" Text="{Binding RepeatPassword}"/>
-            <Button
-            Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+            <StackPanel>
+                <Label Content="Имя"/>
+                <Label Content="Фамилия"/>
+                <Label Content="Отчество"/>
+                <Label Content="Специализация"/>
+                <Label Content="Пароль"/>
+                <Label Content="Подтвердите пароль"/>
+            </StackPanel>
+            <StackPanel x:Name="RegForm">
+                <TextBox Margin="3.5" Text="{Binding Name}"/>
+                <TextBox Margin="3.5" Text="{Binding LastName}"/>
+                <TextBox Margin="3.5" Text="{Binding MiddleName}"/>
+                <TextBox Margin="3.5" Text="{Binding Specialization}"/>
+                <TextBox Margin="3.5" Text="{Binding Password}"/>
+                <TextBox Margin="3.5" Text="{Binding RepeatPassword}"/>
+                <Button
             Name="Register" 
             Width="150" Height="25"
             VerticalAlignment="Bottom"
             Margin="5" Content="Зарегистрироваться" 
-            Click="Register_Click"
-            />
+            Click="Register_Click"/>
+            </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="0">
-            <Label Content="ID"/>
-            <Label Content="Пароль"/>
-        </StackPanel>
-        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="LoginForm">
-            <TextBox Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
-            <TextBox Margin="5" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <StackPanel>
+                <Label Content="ID"/>
+                <Label Content="Пароль"/>
+            </StackPanel>
+            <StackPanel x:Name="LoginForm">
+                <TextBox Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+                <TextBox Margin="5" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
             Name="Login"
             Height="25" Width="150"
             VerticalAlignment="Bottom"
             Margin="5" Content="Войти" Click="Login_Click"/>
+            </StackPanel>
         </StackPanel>
-        <DockPanel Grid.Row="2" Grid.RowSpan="2" Grid.ColumnSpan="2" Background="LightGray" Margin="5">
-            <StackPanel DockPanel.Dock="Left">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Background="LightGray" Margin="5">
+            <StackPanel>
                 <Label Content="Имя:"/>
                 <Label Content="Фамилия:"/>
                 <Label Content="Отчество:"/>
                 <Label Content="Специализация:"/>
             </StackPanel>
-            <StackPanel DockPanel.Dock="Right" x:Name="InfoForm">
-                <Label Content="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="{Binding MiddleName, UpdateSourceTrigger=PropertyChanged}"/>
-                <Label Content="{Binding Specialization, UpdateSourceTrigger=PropertyChanged}"/>
+            <StackPanel x:Name="InfoForm">
+                <Label Content="{Binding Name}"/>
+                <Label Content="{Binding LastName}"/>
+                <Label Content="{Binding MiddleName}"/>
+                <Label Content="{Binding Specialization}"/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Background="LightCoral" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3">
+            <StackPanel DockPanel.Dock="Top" x:Name="FindForm">
+                <TextBox Margin="3.5" Text="{Binding ID, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Button Height="25" Width="150"
+                        Name="FindButton"
+                        Content="Найти"
+                        Click="FindButton_Click"/>
+            </StackPanel>
+            <StackPanel x:Name="AppointmentForm">
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <StackPanel>
+                        <Label Content="Имя: "></Label>
+                        <Label Content="Фамилия: "></Label>
+                        <Label Content="Отчество: "></Label>
+                        <Label Content="Последний приём: "></Label>
+                        <Label Content="Последний врач: "></Label>
+                        <Label Content="Дата рождения"></Label>
+                    </StackPanel>
+                    <StackPanel HorizontalAlignment="Right">
+                        <Label Content="{Binding Name}"></Label>
+                        <Label Content="{Binding LastName}"></Label>
+                        <Label Content="{Binding MiddleName}"></Label>
+                        <Label Content="{Binding LastAppointment}"></Label>
+                        <Label Content="{Binding LastDoctorName}"></Label>
+                        <Label Content="{Binding Birthday}"></Label>
+                    </StackPanel>
+                </StackPanel>
+                <Label Content="Диагноз:"></Label>
+                <TextBox Margin="3.5" Text="{Binding Diagnosis, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <Label Content="Рекомендации: "></Label>
+                <TextBox Margin="3.5" Height="50"
+                         Text="{Binding Recomendations, UpdateSourceTrigger=PropertyChanged}"
+                         TextWrapping="Wrap"
+                         VerticalScrollBarVisibility="Auto"/>
+            </StackPanel>
+            <StackPanel>
+                <Button Height="25" Width="150"
+                        Name="EditPatient"
+                        Content="Закончить приём"
+                        Click="EditPatient_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+            <StackPanel Grid.Row="0" Grid.Column="3">
+                <Label Content="Имя"/>
+                <Label Content="Фамилия"/>
+                <Label Content="Отчество"/>
+                <Label Content="Дата рождения"/>
+            </StackPanel>
+            <StackPanel x:Name="AddForm">
+                <TextBox Margin="3.5" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Margin="3.5" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Margin="3.5" Text="{Binding MiddleName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <DatePicker Margin="3.5" SelectedDate="{Binding Birthday, UpdateSourceTrigger=PropertyChanged}"></DatePicker>
+                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+            Name="AddPatient"
+            Height="25" Width="150"
+            VerticalAlignment="Bottom"
+            Margin="5" Content="Добавить" Click="AddPatient_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Margin="5" Background="Aquamarine" x:Name="EditPatientForm">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label Content="Имя: "></Label>
+                    <Label Content="Фамилия: "></Label>
+                    <Label Content="Отчество: "></Label>
+                    <Label Content="Дата рождения"></Label>
+                </StackPanel>
+                <StackPanel Width="200">
+                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Margin="3.5"></TextBox>
+                    <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" Margin="3.5"></TextBox>
+                    <TextBox Text="{Binding MiddleName, UpdateSourceTrigger=PropertyChanged}" Margin="3.5"></TextBox>
+                    <DatePicker SelectedDate="{Binding Birthday, UpdateSourceTrigger=PropertyChanged}" Margin="3.5"></DatePicker>
+                    <Button
+                            Content="Изменить"
+                            Name="Edit"
+                            Click="EditPatient_Click" Margin="5"/>
+                    <Button Content="Сбросить"
+                            Name="Reset"
+                            Click="Reset_Click"
+                            Margin="5"
+                            />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <DockPanel Grid.Row="4" Grid.ColumnSpan="5" Background="Gray">
+            <Label Content="Количество файлов:"></Label>
+            <Label Content="{Binding JSONFiles, UpdateSourceTrigger=PropertyChanged}"></Label>
+            <Label Content="Количество пациентов: "></Label>
+            <Label Content="{Binding Patients, UpdateSourceTrigger=PropertyChanged}"></Label>
+            <Label Content="Количество докторов: "></Label>
+            <Label Content="{Binding Doctors, UpdateSourceTrigger=PropertyChanged}"></Label>
         </DockPanel>
     </Grid>
 </Window>

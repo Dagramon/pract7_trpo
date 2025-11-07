@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace pract7_trpo
 {
-    class User
+    class Doctor
     {
         public string Name { get; set; }
         public string LastName { get; set; }
@@ -16,8 +16,9 @@ namespace pract7_trpo
         public string Specialization { get; set; }
 
         public string Password { get; set; }
+
+        public string ID { get; set; }
         [JsonIgnore]
         public string RepeatPassword { get; set; }
-        public string ID { get; set; }
     }
 }
