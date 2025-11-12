@@ -11,8 +11,8 @@ namespace pract7_trpo
     class Info : INotifyPropertyChanged
     {
         private int jsonfiles { get; set ; }
-        public int patients { get; set; }
-        public int doctors { get; set; }
+        private int patients { get; set; }
+        private int doctors { get; set; }
 
         public int JSONFiles
         {

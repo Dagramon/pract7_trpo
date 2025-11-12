@@ -22,6 +22,7 @@ namespace pract7_trpo
         private Patient currentPatient = new Patient();
         private Patient addedPatient = new Patient();
         private Patient foundPatient = new Patient();
+        private Button button = new Button();
         Info info = new Info();
         public MainWindow()
         {
